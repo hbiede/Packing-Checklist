@@ -1,0 +1,24 @@
+{
+  "name": "packing-checklist",
+  "version": "1.0.0",
+  "main": "packing.ts",
+  "repository": "git@github.com:hbiede/Packing-Checklist.git",
+  "author": "",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "esbuild --minify --tree-shaking=true --bundle --outdir=bin packing.ts",
+    "postinstall": "husky install"
+  },
+  "devDependencies": {
+    "esbuild": "^0.15.10",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1"
+  },
+  "lint-staged": {
+    "*.{css,html,js,json,md,ts,tsx}": [
+      "prettier --write"
+    ]
+  }
+}

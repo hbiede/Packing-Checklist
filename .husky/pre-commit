@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ -f "$(dirname "$0")/_/husky.sh" ]; then
+  . "$(dirname "$0")/_/husky.sh"
+
+  yarn lint-staged
+fi
