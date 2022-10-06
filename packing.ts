@@ -167,6 +167,12 @@ const main = () => {
         name: 'Extra Outfit in Backpack',
       },
     ];
+  } else {
+    MAIN.subtasks = [
+      {
+        name: 'Fan?',
+      },
+    ];
   }
 
   const commonItems: [string, ...(string | Task)[]] = [
