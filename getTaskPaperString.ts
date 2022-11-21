@@ -17,7 +17,7 @@ export type Task = {
   tags?: [string, ...string[]];
 } & (
   | {
-      repeatMethod: "fixed" | "start-after-completion" | "due-after-completion";
+      repeatMethod: 'fixed' | 'start-after-completion' | 'due-after-completion';
       /**
        * ICS repeat rule (see {@link https://www.ietf.org/rfc/rfc2445.txt RCF244557})
        */
@@ -65,10 +65,10 @@ const getMetadataString = ({
   }
 
   if (tags && tags.length > 0) {
-    result.push(`@tags(${tags.filter((tag) => !!tag).join(", ")})`);
+    result.push(`@tags(${tags.filter((tag) => !!tag).join(', ')})`);
   }
 
-  return result.join(" ");
+  return result.join(' ');
 };
 
 export const getTaskPaperString = (task: Task) => {
@@ -86,13 +86,13 @@ export const getTaskPaperString = (task: Task) => {
       continue;
     }
 
-    if (typeof current === "string") {
-      result.push(`${"\t".repeat(indentLength)}- ${current}`);
+    if (typeof current === 'string') {
+      result.push(`${'\t'.repeat(indentLength)}- ${current}`);
     } else {
       result.push(
-        `${"\t".repeat(indentLength)}- ${current.name} ${getMetadataString(
-          current
-        )}`.trimRight()
+        `${'\t'.repeat(indentLength)}- ${current.name} ${getMetadataString(
+          current,
+        )}`.trimRight(),
       );
       if (current.subtasks && current.subtasks.length > 0) {
         queue = [...current.subtasks, null, ...queue];
@@ -100,5 +100,5 @@ export const getTaskPaperString = (task: Task) => {
       }
     }
   }
-  return result.join("\n");
+  return result.join('\n');
 };
