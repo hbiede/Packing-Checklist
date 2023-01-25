@@ -33,12 +33,24 @@ const main = () => {
     ];
   }
 
-  const commonItems: [string, ...(string | Task)[]] = [
-    `${nightsStaying} Shirts`,
-    'Shoes',
-    `${nightsStaying + 1} Pairs of Socks`,
-    `${nightsStaying + 1} Pairs of Underwear`,
-    `${Math.ceil(nightsStaying / 3)} Sets of Pajamas`,
+  const commonItems: [Task | string, ...(string | Task)[]] = [
+    {
+      name: 'Clothing',
+      subtasks: [
+        `${nightsStaying} Shirts`,
+        'Shoes',
+        `${nightsStaying + 1} Pairs of Socks`,
+        `${nightsStaying + 1} Pairs of Underwear`,
+        `${Math.ceil(nightsStaying / 3)} Sets of Pajamas`,
+        ...(isWarmWeather === true || isWarmWeather === 'true'
+          ? [`${nightsStaying} Pairs of Shorts`, 'Swimsuit?', 'Sunglasses']
+          : [
+              `${Math.ceil(nightsStaying / 2)} Pairs of Shorts`,
+              'Jacket/Coat',
+              `${nightsStaying} Sweaters`,
+            ]),
+      ],
+    } as Task,
     'Blanket',
     'Pillow',
     {
@@ -61,25 +73,8 @@ const main = () => {
     'Headphones Charger',
     'iPad/Kindle',
   ];
-  if (MAIN.subtasks && MAIN.subtasks.length > 0) {
-    MAIN.subtasks.push(...commonItems);
-  } else {
-    MAIN.subtasks = commonItems;
-  }
 
-  if (isWarmWeather === true || isWarmWeather === 'true') {
-    MAIN.subtasks.push(
-      `${nightsStaying} Pairs of Shorts`,
-      'Swimsuit?',
-      'Sunglasses',
-    );
-  } else {
-    MAIN.subtasks.push(
-      `${Math.ceil(nightsStaying / 2)} Pairs of Shorts`,
-      'Jacket/Coat',
-      `${nightsStaying} Sweaters`,
-    );
-  }
+  MAIN.subtasks = [...(MAIN.subtasks ?? []), ...commonItems];
 
   return getTaskPaperString(MAIN);
 };
