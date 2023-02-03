@@ -19,12 +19,15 @@ const main = () => {
   };
 
   if (isFlying === true || isFlying === 'true') {
-    nightsStaying--;
-    MAIN.subtasks = [
-      {
-        name: 'Extra Outfit in Backpack',
-      },
-    ];
+    if (nightsStaying > 3) {
+      // 3 or fewer and I'm not checking
+      nightsStaying--;
+      MAIN.subtasks = [
+        {
+          name: 'Extra Outfit in Backpack',
+        },
+      ];
+    }
   } else {
     MAIN.subtasks = [
       {
