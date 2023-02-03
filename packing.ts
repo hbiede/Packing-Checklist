@@ -54,8 +54,10 @@ const main = () => {
             ]),
       ],
     } as Task,
-    'Blanket',
-    'Pillow',
+      ...(!isFlying || nightsStaying > 3 ? [
+      'Blanket',
+      'Pillow'
+    ] : []),
     {
       name: 'Toiletries',
       subtasks: [
