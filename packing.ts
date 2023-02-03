@@ -40,17 +40,17 @@ const main = () => {
     {
       name: 'Clothing',
       subtasks: [
-        `${nightsStaying} Shirts`,
+        `${nightsStaying} Shirt${nightsStaying === 1 ? '' : 's'}`,
         'Shoes',
-        `${nightsStaying + 1} Pairs of Socks`,
-        `${nightsStaying + 1} Pairs of Underwear`,
-        `${Math.ceil(nightsStaying / 3)} Sets of Pajamas`,
+        `${nightsStaying + 1} Pair${nightsStaying === 2 ? '' : 's'} of Socks`,
+        `${nightsStaying + 1} Pair${nightsStaying === 2 ? '' : 's'} of Underwear`,
+        `${Math.ceil(nightsStaying / 3)} Set${nightsStaying > 3 ? 's' : ''} of Pajamas`,
         ...(isWarmWeather === true || isWarmWeather === 'true'
-          ? [`${nightsStaying} Pairs of Shorts`, 'Swimsuit?', 'Sunglasses']
+          ? [`${nightsStaying} Pairs of Short${nightsStaying === 1 ? '' : 's'}`, 'Swimsuit?', 'Sunglasses']
           : [
-              `${Math.ceil(nightsStaying / 2)} Pairs of Shorts`,
+              `${Math.ceil(nightsStaying / 2)} Pair${nightsStaying > 2 ? 's' : ''} of Shorts`,
               'Jacket/Coat',
-              `${nightsStaying} Sweaters`,
+              `${nightsStaying} Sweater${nightsStaying === 1 ? '' : 's'}`,
             ]),
       ],
     } as Task,
@@ -67,7 +67,7 @@ const main = () => {
         ...(isWarmWeather === true || isWarmWeather === 'true'
           ? []
           : ['Chapstick']),
-        ...(nightsStaying > 2 ? ['Razor'] : []),
+        ...(nightsStaying > 2 && !isFlying ? ['Razor'] : []),
       ],
     } as Task,
     'Phone Charger',
