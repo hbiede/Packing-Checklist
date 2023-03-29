@@ -48,7 +48,8 @@ const main = () => {
         ...(isWarmWeather === true || isWarmWeather === 'true'
           ? [`${nightsStaying} Pairs of Short${nightsStaying === 1 ? '' : 's'}`, 'Swimsuit?', 'Sunglasses']
           : [
-              `${Math.ceil(nightsStaying / 2)} Pair${nightsStaying > 2 ? 's' : ''} of Shorts`,
+              `${Math.ceil(nightsStaying / 3)} Pair${nightsStaying > 3 ? 's' : ''} of Shorts`,
+              'Pants',
               'Jacket/Coat',
               `${nightsStaying} Sweater${nightsStaying === 1 ? '' : 's'}`,
             ]),
